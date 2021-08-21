@@ -21,12 +21,12 @@ import (
 )
 
 var (
-	Bold      = escape.Combine(escape.Bold, escape.ResetBold).Func()
-	Dim       = escape.Combine(escape.Dim, escape.ResetDim).Func()
-	Underline = escape.Combine(escape.Underline, escape.ResetUnderline).Func()
-	Blink     = escape.Combine(escape.Blink, escape.ResetBlink).Func()
-	Reverse   = escape.Combine(escape.Reverse, escape.ResetReverse).Func()
-	Hidden    = escape.Combine(escape.Hidden, escape.ResetHidden).Func()
+	Bold      = escape.Combine(escape.Bold, escape.ResetBold.Swap()).Func()
+	Dim       = escape.Combine(escape.Dim, escape.ResetDim.Swap()).Func()
+	Underline = escape.Combine(escape.Underline, escape.ResetUnderline.Swap()).Func()
+	Blink     = escape.Combine(escape.Blink, escape.ResetBlink.Swap()).Func()
+	Reverse   = escape.Combine(escape.Reverse, escape.ResetReverse.Swap()).Func()
+	Hidden    = escape.Combine(escape.Hidden, escape.ResetHidden.Swap()).Func()
 
 	Reset          = escape.Reset.String()
 	ResetBold      = escape.ResetBold.String()
