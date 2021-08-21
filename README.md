@@ -63,11 +63,11 @@ import (
 )
 
 func main() {
-    label := escape.Combine(escape.Bold, color.White.FG(), color.Red.FG(), escape.Reset)
+    label := escape.Combine(escape.Bold, color.White.FG(), color.Red.FG(), escape.Reset.Swap()).Func()
     println(label(" Bold Red Label ") + " Default Text")
 
     // Or with a formatting string
-    msgFmt := label(" %s ") + " %s"
+    msgFmt := label(" %s ") + " %s\n"
     fmt.Printf(msgFmt, "Like", "So")
 }
 ```

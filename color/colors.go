@@ -66,9 +66,9 @@ func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 }
 
 func (c Color) FG() escape.Sequence {
-	return c.seq(fg, 30, 90)
+	return c.seq(fg, 30, 92)
 }
 
 func (c Color) BG() escape.Sequence {
-	return c.seq(bg, 40, 100)
+	return c.seq(bg, 40, 102)
 }
