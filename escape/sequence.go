@@ -28,7 +28,7 @@ var (
 	Blink          = Sequence{Pre: "5"}
 	Reverse        = Sequence{Pre: "7"}
 	Hidden         = Sequence{Pre: "8"}
-	ResetBold      = Sequence{Pre: "21"}
+	ResetBold      = Sequence{Pre: "22"}
 	ResetDim       = Sequence{Pre: "22"}
 	ResetUnderline = Sequence{Pre: "24"}
 	ResetBlink     = Sequence{Pre: "25"}
