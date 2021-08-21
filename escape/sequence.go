@@ -59,6 +59,14 @@ func (s Sequence) Func() style.Style {
 	}
 }
 
+func (s Sequence) String() string {
+	return s.Func()("")
+}
+
+func (s Sequence) Swap() Sequence {
+	return Sequence{Pre: s.Post, Post: s.Pre}
+}
+
 func Combine(seqs ...Sequence) (next Sequence) {
 	for _, seq := range seqs {
 		if len(seq.Pre) > 0 {

@@ -26,11 +26,8 @@ import (
 
 func main() {
     println(flair.Bold("This is Bolded Text"))
-    println(flair.Reset())
     println(flair.Green("This is Green Text"))
-    println(flair.Reset())
     println(flair.RedBG("This is Text with a Red background"))
-    println(flair.Reset())
 }
 ```
 
@@ -41,17 +38,16 @@ package main
 
 import (
     "github.com/DataDrake/flair/color"
+    "github.com/DataDrake/flair/escape"
 )
 
 func main() {
     Purple   := color.Color{56}
-    purple   := Purple.FG().Func()
-    purpleBG := Purple.BG().Func()
+    purple   := escape.Combine(Purple.FG(), color.DefaultFG.Swap()).Func()
+    purpleBG := escape.Combine(Purple.BG(), color.DefaultBG.Swap()).Func()
 
     println(purple("This is Purple Text"))
-    println(flair.Reset())
     println(purpleBG("This is Text with a Purple background"))
-    println(flair.Reset())
 }
 ```
 
