@@ -48,12 +48,12 @@ const (
 )
 
 type Color struct {
-	code uint8
+	Code uint8
 }
 
 func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 	var pre string
-	code := c.code
+	code := c.Code
 	switch {
 	case code < 8, code == 9:
 		pre = strconv.Itoa(int(code + eight))
