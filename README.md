@@ -5,7 +5,7 @@ Simple console formatting library for Go
 
 ## Motivation
 
-There are definitely a bunch of other libraries like this, but I wanted one I knew would be maintained and properlyversioned. I *might* also have a strong preference about how clean the code that I'm importing is.
+There are definitely a bunch of other libraries like this, but I wanted one I knew would be maintained and properly versioned. I *might* also have a strong preference about how clean the code that I'm importing is.
 
 ## Goals
 
@@ -31,6 +31,8 @@ func main() {
 }
 ```
 
+![Formatting Example](/images/example1.png "Format Example")
+
 You can pretty easily create custom [colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting) and functions:
 
 ```
@@ -50,6 +52,8 @@ func main() {
     println(purpleBG("This is Text with a Purple background"))
 }
 ```
+
+![Colors Example](/images/example2.png "Colors Example")
 
 And you can easily combine multiple formatting directives into one:
 
@@ -72,6 +76,7 @@ func main() {
 }
 ```
 
+![Combined Format Example](/images/example3.png "Combined Format Example")
 
 ## License
  
