@@ -23,25 +23,31 @@ import (
 
 // CSI Character Attributes (SGR) - Colors
 // See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
+// Default Colors
 var (
-	DefaultFG    = escape.Sequence{Pre: "39", Post: ""} // DefaultFG resets the foreground color
-	DefaultBG    = escape.Sequence{Pre: "49", Post: ""} // DefaultBG resets the background color
-	Black        = Color{0}
-	Red          = Color{1}
-	Green        = Color{2}
-	Yellow       = Color{3}
-	Blue         = Color{4}
-	Magenta      = Color{5}
-	Cyan         = Color{6}
-	LightGray    = Color{7}
-	DarkGray     = Color{8}
-	LightRed     = Color{9}
-	LightGreen   = Color{10}
-	LightYellow  = Color{11}
-	LightBlue    = Color{12}
-	LightMagenta = Color{13}
-	LightCyan    = Color{14}
-	White        = Color{15}
+	DefaultFG = escape.Sequence{Pre: "39", Post: ""} // DefaultFG resets the foreground color
+	DefaultBG = escape.Sequence{Pre: "49", Post: ""} // DefaultBG resets the background color
+)
+
+// 16 colors
+const (
+	Black Color = iota
+	Red
+	Green
+	Yellow
+	Blue
+	Magenta
+	Cyan
+	LightGray
+	DarkGray
+	LightRed
+	LightGreen
+	LightYellow
+	LightBlue
+	LightMagenta
+	LightCyan
+	White
 )
 
 const (
@@ -50,21 +56,18 @@ const (
 )
 
 // Color represents a 256 color mode sequence
-type Color struct {
-	Code uint8
-}
+type Color uint8
 
 // seq generates the necessary escape Sequence for this color, using the smallest encoding
 func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 	var pre string
-	code := c.Code
 	switch {
-	case code < 8, code == 9:
-		pre = strconv.Itoa(int(code + eight))
-	case code < 16:
-		pre = strconv.Itoa(int(code + sixteen))
+	case c < 8, c == 9:
+		pre = strconv.Itoa(int(uint8(c) + eight))
+	case c < 16:
+		pre = strconv.Itoa(int(uint8(c) + sixteen))
 	default:
-		pre = suffix + strconv.Itoa(int(code))
+		pre = suffix + strconv.Itoa(int(c))
 	}
 	return escape.Sequence{Pre: pre, Post: ""}
 }

@@ -44,7 +44,7 @@ import (
 )
 
 func main() {
-    Purple   := color.Color{56}
+    Purple   := color.Color(56)
     purple   := escape.Combine(Purple.FG(), color.DefaultFG.Swap()).Func()
     purpleBG := escape.Combine(Purple.BG(), color.DefaultBG.Swap()).Func()
 
