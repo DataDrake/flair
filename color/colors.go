@@ -21,9 +21,11 @@ import (
 	"strconv"
 )
 
+// CSI Character Attributes (SGR) - Colors
+// See: https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 var (
-	DefaultFG    = escape.Sequence{Pre: "39", Post: ""}
-	DefaultBG    = escape.Sequence{Pre: "49", Post: ""}
+	DefaultFG    = escape.Sequence{Pre: "39", Post: ""} // DefaultFG resets the foreground color
+	DefaultBG    = escape.Sequence{Pre: "49", Post: ""} // DefaultBG resets the background color
 	Black        = Color{0}
 	Red          = Color{1}
 	Green        = Color{2}
@@ -47,10 +49,12 @@ const (
 	bg = "48" + escape.Separator + "5" + escape.Separator
 )
 
+// Color represents a 256 color mode sequence
 type Color struct {
 	Code uint8
 }
 
+// seq generates the necessary escape Sequence for this color, using the smallest encoding
 func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 	var pre string
 	code := c.Code
@@ -65,10 +69,12 @@ func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 	return escape.Sequence{Pre: pre, Post: ""}
 }
 
+// FG generates an escape Sequence which will set this color as the Foreground
 func (c Color) FG() escape.Sequence {
 	return c.seq(fg, 30, 92)
 }
 
+// BG generates an escape Sequence which will set this color as the Background
 func (c Color) BG() escape.Sequence {
 	return c.seq(bg, 40, 102)
 }

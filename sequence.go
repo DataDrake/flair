@@ -20,6 +20,9 @@ import (
 	"github.com/DataDrake/flair/escape"
 )
 
+// CSI Character Attributes (SGR) - Text Formatting
+
+// Helper functions for changing text styles (Auto-reset at string end)
 var (
 	Bold      = escape.Combine(escape.Bold, escape.ResetBold.Swap()).Func()
 	Dim       = escape.Combine(escape.Dim, escape.ResetDim.Swap()).Func()
@@ -27,8 +30,11 @@ var (
 	Blink     = escape.Combine(escape.Blink, escape.ResetBlink.Swap()).Func()
 	Reverse   = escape.Combine(escape.Reverse, escape.ResetReverse.Swap()).Func()
 	Hidden    = escape.Combine(escape.Hidden, escape.ResetHidden.Swap()).Func()
+)
 
-	Reset          = escape.Reset.String()
+// Helper strings for clearing specific formatting
+var (
+	Reset          = escape.Reset.String() // Reset clears all formatting, including colors
 	ResetBold      = escape.ResetBold.String()
 	ResetDim       = escape.ResetDim.String()
 	ResetUnderline = escape.ResetUnderline.String()
