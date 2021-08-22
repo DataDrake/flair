@@ -65,7 +65,7 @@ func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 	case c < 8, c == 9:
 		pre = strconv.Itoa(int(uint8(c) + eight))
 	case c < 16:
-		pre = strconv.Itoa(int(uint8(c) + sixteen))
+		pre = strconv.Itoa(int(uint8(c) + sixteen - 8))
 	default:
 		pre = suffix + strconv.Itoa(int(c))
 	}
@@ -74,10 +74,10 @@ func (c Color) seq(suffix string, eight, sixteen uint8) escape.Sequence {
 
 // FG generates an escape Sequence which will set this color as the Foreground
 func (c Color) FG() escape.Sequence {
-	return c.seq(fg, 30, 92)
+	return c.seq(fg, 30, 90)
 }
 
 // BG generates an escape Sequence which will set this color as the Background
 func (c Color) BG() escape.Sequence {
-	return c.seq(bg, 40, 102)
+	return c.seq(bg, 40, 100)
 }
